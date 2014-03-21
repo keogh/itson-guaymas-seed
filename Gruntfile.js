@@ -10,12 +10,25 @@ module.exports = function (grunt) {
           port: 9000,
           hostname: 'localhost',
           livereload: 35729,
-          base: 'app',
-          keepalive: true
+          base: 'app'
         }
+      }
+    },
+
+    watch: {
+      livereload: {
+        options: {
+          livereload: '<%= connect.server.options.livereload %>'
+        },
+        files: [
+          'app/{,*/}*.html'
+        ]
       }
     }
   });
 
-  grunt.registerTask('server', ['connect']);
+  grunt.registerTask('server', [
+    'connect:server',
+    'watch'
+  ]);
 }
