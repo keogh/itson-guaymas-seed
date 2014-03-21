@@ -1,0 +1,11 @@
+{
+  "name": "itson-guaymas-seed",
+  "version": "0.0.0",
+  "description": "Taller Desarrollo Web en el ITSON Guaymas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Isaac Zepeda",
+  "license": "MIT"
+}
