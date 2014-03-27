@@ -23,6 +23,12 @@ module.exports = function (grunt) {
         files: [
           'app/{,*/}*.html'
         ]
+      },
+      js: {
+        files: ['app/scripts/{,*/}*.js'],
+        options: {
+          livereload: true
+        }
       }
     }
   });
