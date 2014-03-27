@@ -29,6 +29,12 @@ module.exports = function (grunt) {
         options: {
           livereload: true
         }
+      },
+      css: {
+        files: ['app/styles/{,*/}*.css'],
+        options: {
+          livereload: true
+        }
       }
     }
   });
