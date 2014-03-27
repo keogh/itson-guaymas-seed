@@ -6,7 +6,7 @@
   </head>
   <body ng-app="chat-app" ng-controller="MainCtrl">
     <div ng-include="'views/nav.html'"></div>
-    
+
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-9">
@@ -18,7 +18,8 @@
         </div>
       </div>
 
-      <div class="row"></div>
+      <div class="row" ng-include="'views/message_input.html'"></div>
+      <br/>
     </div>
     
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
