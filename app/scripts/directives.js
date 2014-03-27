@@ -1,6 +1,7 @@
 angular.module('chat-app').directive('chatModal', function () {
   var linker = function (scope, element, attrs) {
-    $('#'+attrs['id']).modal();
+    scope.$modal = $('#'+attrs['id']);
+    scope.$modal.modal();
   };
 
   return {

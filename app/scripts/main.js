@@ -1,4 +1,6 @@
 angular.module('chat-app').controller('MainCtrl', function ($scope) {
+  window.scope = $scope;
+
   $scope.users = [
     {username: 'Isaac'},
     {username: 'Alberto'},
@@ -31,6 +33,6 @@ angular.module('chat-app').controller('MainCtrl', function ($scope) {
     $scope.currentUser.username = username;
     $scope.users.push({username: username});
     $scope.modalUsername = null;
-    $('#modalUsername').modal('hide');
+    $scope.$modal.modal('hide');
   }
 });
