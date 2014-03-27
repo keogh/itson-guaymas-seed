@@ -24,4 +24,13 @@ angular.module('chat-app').controller('MainCtrl', function ($scope) {
     });
     $scope.currentUser.message = '';
   }
+
+  $scope.saveUsername = function () {
+    var username = $scope.modalUsername;
+    // TODO: Send username to server
+    $scope.currentUser.username = username;
+    $scope.users.push({username: username});
+    $scope.modalUsername = null;
+    $('#modalUsername').modal('hide');
+  }
 });
