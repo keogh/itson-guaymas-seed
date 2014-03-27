@@ -1,16 +1,10 @@
 angular.module('chat-app').controller('MainCtrl', function ($scope) {
-  window.scope = $scope;
+  //window.scope = $scope;
 
-  $scope.users = [
-    {username: 'Isaac'},
-    {username: 'Alberto'},
-    {username: 'Miguel'},
-    {username: 'Roberto'},
-    {username: 'Jorge'},
-    {username: 'Manuel'},
-    {username: 'Jesus'}
-  ];
+  var socket = io.connect('http://localhost:8080');
 
+  $scope.modalUsername = null;
+  $scope.users = [];
   $scope.messages = [];
   $scope.currentUser = {
     username: 'Isaac',
@@ -19,7 +13,7 @@ angular.module('chat-app').controller('MainCtrl', function ($scope) {
 
   $scope.send = function () {
     if ($scope.currentUser.message === '') return;
-    // TODO: Send message to server
+    socket.emit('msg', $scope.currentUser.message);
     $scope.messages.push({
       username: $scope.currentUser.username,
       content: $scope.currentUser.message
@@ -29,10 +23,29 @@ angular.module('chat-app').controller('MainCtrl', function ($scope) {
 
   $scope.saveUsername = function () {
     var username = $scope.modalUsername;
-    // TODO: Send username to server
+    socket.emit('username', username);
     $scope.currentUser.username = username;
     $scope.users.push({username: username});
     $scope.modalUsername = null;
     $scope.$modal.modal('hide');
   }
+
+  // Socket.io Listeners
+  socket.on('users', function (users) {
+    //console.log('users', users);
+    $scope.users = [];
+    angular.forEach(users, function (user) {
+      $scope.users.push({username: user});
+    });
+    $scope.$apply();
+  });
+
+  socket.on('msg', function (username, msg) {
+    if (username === $scope.currentUser.username) return;
+    $scope.messages.push({
+      username: username,
+      content: msg
+    });
+    $scope.$apply();
+  });
 });
