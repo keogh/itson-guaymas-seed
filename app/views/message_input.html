@@ -1,0 +1,8 @@
+<form name="messageForm">
+  <div class="col-xs-8">
+    <input class="form-control input-lg" type="text" placeholder="Escribe tu Mensaje..." ng-model="currentUser.message" />
+  </div>
+  <div class="col-xs-1">
+    <input class="btn btn-primary btn-lg" type="submit" value="Enviar" ng-click="send()" ng-disabled="!currentUser.message" />
+  </div>
+</form>
