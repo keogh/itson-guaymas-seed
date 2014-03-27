@@ -1,8 +1,3 @@
 <ul class="list-group">
-  <li class="list-group-item">Alberto</li>
-  <li class="list-group-item">Isaac</li>
-  <li class="list-group-item">Juan</li>
-  <li class="list-group-item">Roberto</li>
-  <li class="list-group-item">Jorge</li>
-  <li class="list-group-item">Manuel</li>
+  <li class="list-group-item" ng-repeat="user in users | orderBy:'username'">{{user.username}}</li>
 </ul>
